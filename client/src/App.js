@@ -7,7 +7,7 @@ const mockJobs = [
     {title: 'SWE I', company: 'Google'},
     {title: 'SWE I', company: 'Netflix'},
     {title: 'SWE I', company: 'Apple'},
-    {title: 'SWE I', company: 'Facebook'},
+    {title: 'SWE I', company: 'Amazon'}
 ]
 
 function App() {
