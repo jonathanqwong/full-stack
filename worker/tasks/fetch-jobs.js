@@ -1,10 +1,10 @@
 var fetch = require('node-fetch');
 var redis = require('redis');
+var {promisify} = require('util');
 
-const client = redis.createClient({url: 'redis://127.0.0.1:6379'});
-const {promisify} = require('util');
-const setAsync = promisify(client.set).bind(client);
 const secrets = require('../../config/secrets.js');
+const client = redis.createClient({url: secrets.redisIp});
+const setAsync = promisify(client.set).bind(client);
 const baseURL = 'https://serpapi.com/search';
 const headers = {'Content-Type': 'application/json'};
 const params = {
@@ -12,7 +12,7 @@ const params = {
     'lang': 'en',
     'search': 'software engineer',
     'location': 'bay area',
-    'api': secrets.serpapiApiToken,
+    'api': secrets.serpapiToken,
 };
 
 async function fetchJobs() {
@@ -27,11 +27,9 @@ async function fetchJobs() {
         try {
             const resJson = await res.json();
             const jobs = resJson.jobs_results;
-            // flatten nested array when jobs_results array from response pushed to allJobs array
-            allJobs.push(...jobs);
+            allJobs.push(...jobs); // flatten nested array
             resultCount = jobs.length;
-            // onPage++;
-            console.log(requestUrl + `&start=${onPage}`);
+            // onPage++; // commented out to due api limitations
             console.log('got', resultCount, 'jobs on page', onPage);
         } catch (error) {
             console.error('no more jobs found');
@@ -65,7 +63,5 @@ async function fetchJobs() {
     const success = await setAsync('serpapi', JSON.stringify(jrJobs));
     console.log({success});
 }
-
-fetchJobs();
 
 module.exports = fetchJobs;
