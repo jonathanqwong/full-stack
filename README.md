@@ -1,4 +1,4 @@
 # full-stack application structure
 * api - express server
 * client - react for FE client
-* worker - call api using a cron job
+* worker - call jobs api, store in redis, and run job using a cron job

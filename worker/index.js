@@ -1,5 +1,6 @@
-var CronJob = require('cron').CronJob;
-var job = new CronJob('1 * * * * *', function() {
-    console.log('You will see this message every minute');
-}, null, true, 'America/Los_Angeles');
-job.start();
+var cronJob = require('cron').CronJob;
+
+const fetchJobs = require('./tasks/fetch-jobs.js');
+
+// fetch jobs from api
+new cronJob('* */12 * * *', fetchJobs, null, true, 'America/Los_Angeles');
