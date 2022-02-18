@@ -1,4 +1,4 @@
-var cronJob = require('cron').CronJob;
+const cronJob = require('cron').CronJob;
 
 const fetchJobs = require('./tasks/fetch-jobs.js');
 
