@@ -1,26 +1,26 @@
 const fetch = require('node-fetch');
 const redis = require('redis');
 const client = redis.createClient();
-const secrets = require('../../config/secrets.js');
-const baseUrl = 'https://serpapi.com/search';
+const SECRETS = require('../../config/secrets.js');
+const BASE_URL = 'https://serpapi.com/search';
 const headers = {'Content-Type': 'application/json'};
 const params = {
     'engine': 'google_jobs',
     'lang': 'en',
     'search': 'software+engineer',
     'location': 'bay+area',
-    'api': secrets.serpapiToken,
+    'api': SECRETS.serpapiToken,
 };
 
 async function fetchJobs() {
-    let requestUrl = `${baseUrl}?engine=${params.engine}&hl=${params.lang}&q=${params.search}+${params.location}&api_key=${params.api}`;
+    let requestUrl = `${BASE_URL}?engine=${params.engine}&hl=${params.lang}&q=${params.search}+${params.location}&api_key=${params.api}`;
     let resultCount = 1, onPage = 1;
     const allJobs = [];
 
     // fetch all pages of jobs
     // while (resultCount > 0) {  // commented out to due api limitations
     for (onPage; onPage <= 1; onPage++) {
-        const res = await fetch(`${requestUrl}&start=${onPage}`, headers);
+        const res = await fetch(`${requestUrl}&start=${onPage}`);
         try {
             const resJson = await res.json();
             const jobs = resJson.jobs_results;
