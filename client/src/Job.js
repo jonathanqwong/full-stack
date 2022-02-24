@@ -1,12 +1,20 @@
 import React from "react";
+import Paper from '@material-ui/core/Paper';
 import Typography from "@mui/material/Typography";
 
 export default function Job({job}) {
     return (
-        <div className={"job"}>
-            <div className="left">{job.title}</div>
-            <div className="middle">{job.company_name}</div>
-            <div className="right">{job.location}</div>
-        </div>
+        <Paper className="job">
+            <div className="flex-align-mid">
+                <div className='job-title-location'>
+                    <Typography variant='h6'>{job.title}</Typography>
+                    <Typography variant='h5'>{job.company_name}</Typography>
+                    <Typography variant='h7'>{job.location}</Typography>
+                </div>
+            </div>
+            <div className="flex-align-mid">
+                <Typography>{job.detected_extensions.posted_at}</Typography>
+            </div>
+        </Paper>
     )
 }

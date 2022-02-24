@@ -19,7 +19,7 @@ async function fetchJobs() {
 
     // fetch all pages of jobs
     // while (resultCount > 0) {  // commented out to due api limitations
-    for (onPage; onPage <= 1; onPage++) {
+    for (onPage; onPage <= 6; onPage++) {
         const res = await fetch(`${requestUrl}&start=${onPage}`);
         try {
             const resJson = await res.json();
