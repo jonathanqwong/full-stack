@@ -2,9 +2,9 @@ import React from "react";
 import Paper from '@material-ui/core/Paper';
 import Typography from "@mui/material/Typography";
 
-export default function Job({job}) {
+export default function Job({job, onClick}) {
     return (
-        <Paper className="job">
+        <Paper onClick={onClick} className="job">
             <div className="flex-align-mid">
                 <div className='job-title-location'>
                     <Typography variant='h6'>{job.title}</Typography>

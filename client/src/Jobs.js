@@ -7,6 +7,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import Slide from '@mui/material/Slide';
 
 import Job from './Job';
+import JobModal from './JobModal';
 
 export default function Jobs({jobs}) {
     /* pagination
@@ -26,8 +27,23 @@ export default function Jobs({jobs}) {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
+    // modal
+    const [open, setOpen] = React.useState(false);
+    const [selectedJob, selectJob] = React.useState({});
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    console.log(jobs[1]);
+
     return (
         <div className="jobs">
+            <JobModal open={open} job={selectedJob} handleClose={handleClose} />
             <Typography variant="h4" component="h1">
                 Entry Level Software Jobs
             </Typography>
@@ -36,8 +52,11 @@ export default function Jobs({jobs}) {
             </Typography>
             {
                 jobsOnPage.map(
-                    (job, i) => <Job key={i} job={job}
-                    />
+                    (job, i) => <Job key={i} job={job} onClick={() => {
+                        console.log('clicked');
+                        handleClickOpen();
+                        selectJob(job);
+                    }}/>
                 )
             }
             <div className="pagination">

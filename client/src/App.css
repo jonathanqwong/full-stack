@@ -1,9 +1,10 @@
 body {
   margin: 20px 40px;
+  background-color: steelblue;
 }
 
 .job {
-  width: 85%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   margin: 20px 20px;
@@ -24,6 +25,11 @@ body {
   padding: 30px 50px;
 }
 
+.job-title-location {
+  margin-left: 20px;
+  display: table-row;
+}
+
 .welcome-description {
   width: 80%;
   margin: 20px 0;
@@ -40,12 +46,22 @@ body {
   align-items: center;
 }
 
-.job-title-location {
-  margin-left: 20px;
-  display: table-row;
+.pagination {
+  margin: 20px 20px;
 }
 
-.pagination {
-  margin: 0 20px;
+.alert-dialog-slide-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
+
+.company-logo {
+  border-radius: 50%;
+}
+
+.alert-dialog-slide-description {
+  margin: 20px 20px;
+}
+
 
