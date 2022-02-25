@@ -1,6 +1,7 @@
 body {
   margin: 20px 40px;
-  background-color: steelblue;
+  background-color: #243447;
+  color: #ffffff;
 }
 
 .job {
@@ -53,7 +54,6 @@ body {
 .alert-dialog-slide-title {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
 }
 
 .company-logo {
@@ -61,7 +61,7 @@ body {
 }
 
 .alert-dialog-slide-description {
-  margin: 20px 20px;
+  padding-bottom: 10px;
 }
 
 
