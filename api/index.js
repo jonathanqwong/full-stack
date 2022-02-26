@@ -21,3 +21,8 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
+
+// All other GET requests not handled before will return our React app
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
