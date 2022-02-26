@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3001
@@ -12,8 +13,10 @@ app.get('/api/jobs', async (req, res) => {
     return res.send(jobs);
 })
 
-// Have Node serve the files for our built React app
-app.use(express.static('client/build'));
+// // Have Node serve the files for our built React app
+// app.use(express.static('client'));
+app.use(express.static(path.resolve(__dirname, '../client/build')));
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
