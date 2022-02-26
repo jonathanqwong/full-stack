@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 import Jobs from './Jobs';
 
-const GET_JOB_URL = 'http://0.0.0.0:3001/api/jobs';
+const port = process.env.PORT || 3001;
+const GET_JOB_URL = 'http://0.0.0.0:' + port + '/api/jobs';
 
 async function fetchJobs(updateCallBack) {
     const res = await fetch(GET_JOB_URL);
