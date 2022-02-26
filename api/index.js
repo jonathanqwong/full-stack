@@ -7,7 +7,7 @@ const client = redis.createClient();
 app.get('/api/jobs', async (req, res) => {
     await client.connect();
     const jobs = await client.get('serpapi')
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "http://0.0.0.0:3000");
     await client.disconnect();
     return res.send(jobs);
 })
