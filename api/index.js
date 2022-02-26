@@ -1,9 +1,9 @@
-const path = require('path')
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 3001
+const path = require('path');
+const express = require('express');
+const port = process.env.PORT || 3001;
 const redis = require('redis');
 const client = redis.createClient();
+const app = express();
 
 app.get('/api/jobs', async (req, res) => {
     await client.connect();
