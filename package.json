@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node api/index.js",
-    "build": "cd client && npm install && npm run build" // https://www.freecodecamp.org/news/how-to-create-a-react-app-with-a-node-backend-the-complete-guide/
+    "build": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
