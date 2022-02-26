@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
 const redis = require('redis');
 const client = redis.createClient();
-const SECRETS = require('../../config/secrets.js');
 const BASE_URL = 'https://serpapi.com/search';
 const headers = {'Content-Type': 'application/json'};
 const params = {
@@ -9,7 +8,7 @@ const params = {
     'lang': 'en',
     'search': 'software+engineer',
     'location': 'bay+area',
-    'api': SECRETS.serpapiToken,
+    'api': process.env.SERPAPI_TOKEN,
 };
 
 async function fetchJobs() {
