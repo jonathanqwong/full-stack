@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const port = process.env.PORT || 3001;
 const redis = require('redis');
-const client = redis.createClient(process.env.REDIS_URL, {no_ready_check: true});
+const client = redis.createClient(process.env.REDIS_IP, {no_ready_check: true});
 const app = express();
 
 app.get('/api/jobs', async (req, res) => {
