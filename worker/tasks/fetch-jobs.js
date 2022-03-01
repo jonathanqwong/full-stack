@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 const redis = require('redis');
-// const client = redis.createClient(process.env.REDIS_URL, {no_ready_check: true});
+const client = redis.createClient(process.env.REDIS_URL);
 const BASE_URL = 'https://serpapi.com/search';
 const headers = {'Content-Type': 'application/json'};
 const params = {
@@ -10,14 +10,6 @@ const params = {
     'location': 'bay+area',
     'api': process.env.SERPAPI_TOKEN,
 };
-
-let redisClient
-if(process.env.REDIS_URL){
-    let redisURL = url.parse(process.env.REDIS_URL);
-    redisClient = redis.createClient(redisURL)
-} else {
-    redisClient = redis.createClient()
-}
 
 async function fetchJobs() {
     let requestUrl = `${BASE_URL}?engine=${params.engine}&hl=${params.lang}&q=${params.search}+${params.location}&api_key=${params.api}`;
