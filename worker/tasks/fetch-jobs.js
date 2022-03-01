@@ -33,6 +33,12 @@ async function fetchJobs() {
         };
     }
 
+    client.set('foo', 'bar');
+    client.get('foo', function (err, reply) {
+        console.log(reply.toString()); // Will print `bar`
+    });
+
+
     console.log('got', allJobs.length, 'jobs total');
 
     //filter algo
