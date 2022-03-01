@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 const redis = require('redis');
-const client = redis.createClient({url: process.env.REDIS_URL});
+const client = redis.createClient({url: process.env.REDIS_IP});
 const BASE_URL = 'https://serpapi.com/search';
 const headers = {'Content-Type': 'application/json'};
 const params = {
