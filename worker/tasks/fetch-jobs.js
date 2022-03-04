@@ -54,8 +54,8 @@ async function fetchJobs() {
     console.log('filtered down to', jrJobs.length);
     await client.connect();
     await Promise.all([
-        // client.set('serpapi', JSON.stringify(jrJobs)),
-        client.set('foo', 'bar')
+        client.set('serpapi', JSON.stringify(jrJobs)),
+        // client.set('foo', 'bar')
     ]);
 }
 
